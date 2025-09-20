@@ -1,3 +1,10 @@
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
+
 const createElements =(arr) => {
     const htmlElements= arr.map((el) => `<span class="btn">${el}</span>`);
 return htmlElements.join("");
@@ -44,8 +51,8 @@ if(words.length == 0){
     wordContainer.innerHTML=`
     <div class="text-center col-span-full rounded-xl py-10 font-bangla space-y-6">
     <img src="./assets/alert-error.png" class="mx-auto"/>
-    <p class="text-xl font-medium text-gray-400">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p> 
-    <h2 class="font-bold text-4xl">নেক্সট Lesso n এ যান</h2>
+    <p class="text-xl font-medium text-gray-400 font-bangla">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p> 
+    <h2 class="font-bold text-4xl font-bangla">নেক্সট Lesso n এ যান</h2>
     </div>
     `;
     manageSpinner(false);
@@ -70,7 +77,7 @@ words.forEach(word => {
     <div class="text-2xl font-medium font-bangla">"${word.meaning ? word.meaning : "There is no meaning"} / ${word.pronunciation? word.pronunciation : "No pronounciation" }"</div>
       <div class="flex justify-between items-center">
     <button onclick="loadWordDetail(${word.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
-    <button class="btn bg-[#1A91FF10]  hover:bg-[#1A91FF80]"><i class="fa-solid fa-volume-high"></i></i></button>
+    <button onclick="pronounceWord('${word.word}')" class="btn bg-[#1A91FF10]  hover:bg-[#1A91FF80]"><i class="fa-solid fa-volume-high"></i></i></button>
       </div>
     </div>
     `;
@@ -119,7 +126,7 @@ detailsBox.innerHTML = `
     </div>
     <div class="">
       <h2 class="font-bold">Meaning </h2>
-      <p>${word.meaning}</p>
+      <p class="font-bangla">${word.meaning}</p>
     </div>
     <div class="">
       <h2 class="font-bold">Example </h2>
