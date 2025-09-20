@@ -64,7 +64,7 @@ words.forEach(word => {
     console.log(word);
     const card=document.createElement("div");
     card.innerHTML=`  
-    <div class="bg-white rounded-xl shadow-sm text-center py-10 px-5 space-y-4">
+    <div class="bg-white rounded-xl shadow-sm text-center py-10 px-5 space-y-4 ">
     <h2 class="font-bold text-2xl">${word.word ? word.word :"There is no Word"}</h2>
     <p class="font-semibold">Meaning /Pronounciation</p>
     <div class="text-2xl font-medium font-bangla">"${word.meaning ? word.meaning : "There is no meaning"} / ${word.pronunciation? word.pronunciation : "No pronounciation" }"</div>
@@ -156,3 +156,19 @@ levelContainer.append(btnDiv);
 
 };
 loadlessons();
+
+document.getElementById("btn-search").addEventListener("click",()=>{
+  removeActive();
+  const input=document.getElementById("input-search");
+  const searchValue=input.value.trim().toLowerCase();
+  // console.log(searchValue)
+
+  fetch("https://openapi.programming-hero.com/api/words/all")
+  .then((res)=>res.json())
+  .then((data)=> {const allWords = data.data;
+    // console.log(allWords);
+    const filterWords= allWords.filter(word=>word.word.toLowerCase().includes(searchValue))
+  //  console.log(filterWords)
+   displayLevelWord(filterWords);
+  });
+})

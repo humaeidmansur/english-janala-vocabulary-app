@@ -107,10 +107,24 @@
  </section>
 
  <!-- section_one  -->
-<section>
+<section class="mb-8">
    <h2 class="text-3xl font-bold mb-8 text-center"><span class="text-sky-400">Let's </span> Learn Vocabularies</h2>
 
    <div id="level-container" class="flex gap-5 flex-wrap justify-center"></div>
+</section>
+
+<!-- Search -->
+
+<section class="flex justify-center">
+  <div class="join">
+  <div>
+    <label class="input validator join-item">
+  <input id ="input-search" type="email" placeholder="Search Vocabulary Now" required />
+    </label>
+   
+  </div>
+  <button id ="btn-search" class="btn btn-primary join-item">Search</button>
+  </div>
 </section>
 
 <!-- Loading -->
@@ -119,7 +133,7 @@
  </section>
 
  <!-- section_two  -->
-<section id="word-container" class ="bg-gray-100 p-10 w-11/12 mx-auto my-10 grid grid-cols-3 gap-5">
+<section id="word-container" class ="bg-gray-100 p-10 w-11/12 mx-auto my-10 grid grid-cols-1  md:grid-cols-3 gap-5">
 
 <div class="text-center col-span-full rounded-xl py-10 font-bangla space-y-6">
  <p class="text-xl font-medium text-gray-400">আপনি এখনো কোন Lesson Select করেন নি</p> 
